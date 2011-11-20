@@ -1,0 +1,42 @@
+EDITABLE TABLE
+--------------
+
+This project goal is to make an open source web based excel like based on YUI 3.
+
+We use the current YUI 3 version : 3.4.1
+We use twitter bootstrap for css version 1.4.0
+
+- Directory structure :
+-----------------------
+
+    /css            -> place to put our custom css file
+    /js             -> place to put our custom js file
+    /js/main.js     -> the main js file
+    /js/plugins     -> our YUI custom plugin
+    /js/widgets     -> our YUI custom widget
+    /js/modules     -> our YUI custom modules
+    /images         -> place to put our images
+    /scripts        -> place to put our script (php). Just to test the dynamic save/load data
+    index.html      -> the base html file
+
+- Conention :
+-------------
+
+    - Coding :
+    ----------
+        - 4 spaces indentation
+        - for code (mainly js) : camelCase notation
+        - for html/css : word are split with a - (ie: element-wrapper)
+        - open bracket : if(test) {
+        - else statement : } else {
+    
+        For vim, we can use this settings (placed in your .vimrc) :
+            set cindent
+            set tabstop=4
+            set shiftwidth=4
+            set expandtab
+
+    - Scripts :
+    -----------
+        We use script just to receive data from the UI (to simulate a save for exemple) or send data back to the ui
+        Data are always JSON. We might add a plugin later to handle other format.

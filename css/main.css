@@ -1,3 +1,7 @@
-#table td.selected {
+#table .selected {
     border: 1px solid black;
+}
+
+.actions .btn {
+    margin: 0 5px;
 }

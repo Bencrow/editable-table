@@ -2,16 +2,61 @@ YUI({
     lang: "fr",
     combine: false,
     groups: {
-        "widget": {
+        "classes": {
             combine: false,
-            base: "js/widgets/",
+            base: "js/classes/",
             modules: {
-                "editableTable": {
-                    path: "editableTable.js",
-                    require: ["node", "event", "widget", "substitute"] 
-                }
+                "cell": {
+                    path: "cell.js",
+                    require: ["node", "base", "substitute"] 
+                },
+                "table": {
+                    path: "table.js",
+                    require: ["node", "base", "array-extras"]
+                },
             }
         }
     },
-}).use("widget", function(Y) {
+}).use(
+    "console",
+    "node", 
+    "base",
+    "table",
+    "cell", 
+function(Y) {
+
+    /* Utiliy / shortcut */
+    var selector = "td, th";
+
+    /* Create our table object */
+    var table = new Y.Table({
+        node: Y.one("table#table"),
+        childSelector: 'td,th',
+    });
+
+    /* Toggle the select status of the clicked cell */
+    var select = function(e) {
+        var cell = e.target.data;
+        cell.toggleSelected();
+    };
+    
+    /* Event binding */
+    table.get("node").delegate("click", select, "td, th");
+
+    /* Create button to add row and column */
+    var actionNode = Y.one(".actions");
+
+    var addRow = Y.Node.create("<button/>");
+    addRow.setContent("add a row");
+    addRow.addClass("btn");
+    actionNode.append(addRow);
+
+    addRow.on("click", table.addRow, table);
+
+    var addCol = Y.Node.create("<button/>");
+    addCol.setContent("add a column");
+    addCol.addClass("btn");
+    actionNode.append(addCol);
+
+    addCol.on("click", table.addCol, table);
 });

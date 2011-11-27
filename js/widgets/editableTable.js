@@ -31,7 +31,7 @@ YUI().add("editableTable", function(Y) {
 			/* Create our table object */
 			this.table = new Y.Table({
 				node: tableNode,
-				childSelector: 'td,th',
+				childSelector: 'td, th',
 			});
 
 			this.table.selectCellByCoords({x:1,y:1});			
@@ -57,38 +57,29 @@ YUI().add("editableTable", function(Y) {
 
 			addCol.on("click", table.addCol, table);
 			
-			/* Create button to move left, up, right and down */
-			var left = Y.Node.create("<button/>");
-			left.setContent("left");
-			left.addClass("btn");
-			actionNode.append(left);
-
-			left.on("click", table.selectLeftCell, table);
-			
-			var right = Y.Node.create("<button/>");
-			right.setContent("right");
-			right.addClass("btn");
-			actionNode.append(right);
-
-			right.on("click", table.selectRightCell, table);
-			
-			var up = Y.Node.create("<button/>");
-			up.setContent("up");
-			up.addClass("btn");
-			actionNode.append(up);
-
-			up.on("click", table.selectAboveCell, table);
-			
-			var down = Y.Node.create("<button/>");
-			down.setContent("down");
-			down.addClass("btn");
-			actionNode.append(down);
-
-			down.on("click", table.selectBelowCell, table);
 		},
 		/* Event binding */
 		bindUI: function() {
-			this.table.get("node").delegate("click", Y.bind(this._select, this), "td, th");
+			var node = this.table.get("node");
+			var key = (Y.UA.webkit || Y.UA.ie) ? 'down' : 'press';
+			var doc = Y.one("document");
+			
+			node.delegate(
+				"click", Y.bind(this._select, this), "td, th");
+				
+			/* Key event can only be bind on document or input */
+			doc.on(
+				"key", Y.bind(this.table.selectLeftCell, this.table),
+				key+":37");
+			doc.on(
+				"key", Y.bind(this.table.selectRightCell, this.table),
+				key+":39");
+			doc.on(
+				"key", Y.bind(this.table.selectAboveCell, this.table),
+				key+":38");
+			doc.on(
+				"key", Y.bind(this.table.selectBelowCell, this.table),
+				key+":40");
 		},
 		syncUI: function() {
 		},

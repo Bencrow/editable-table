@@ -34,6 +34,7 @@ YUI({
     "table",
     "cell", 
     "editableTable",
+    "event-key",
 function(Y) {
 
 	var editableTable = new Y.EditableTable({

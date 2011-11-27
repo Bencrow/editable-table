@@ -223,10 +223,8 @@ YUI().add("table", function(Y) {
 		 * @public
 		 * @return void
 		 */
-		selectRightCell: function() {
-			var currentCell = this.get("selectedCell");
-			
-			var position = currentCell.get("coords");
+		selectRightCell: function() {			
+			var position = this.get("selectedCell").get("coords");
 			// Move to right means x + 1
 			var newPosition = {
 				x: position.x+1,
@@ -244,9 +242,7 @@ YUI().add("table", function(Y) {
 		 * @return void
 		 */
 		selectLeftCell: function() {
-			var currentCell = this.get("selectedCell");
-			
-			var position = currentCell.get("coords");
+			var position = this.get("selectedCell").get("coords");
 			// Move to left means x -1
 			var newPosition = {
 				x: position.x-1,
@@ -264,9 +260,7 @@ YUI().add("table", function(Y) {
 		 * @return void
 		 */
 		selectAboveCell: function() {
-			var currentCell = this.get("selectedCell");
-			
-			var position = currentCell.get("coords");
+			var position = this.get("selectedCell").get("coords");
 			// Move up means y - 1
 			var newPosition = {
 				x: position.x,
@@ -284,9 +278,7 @@ YUI().add("table", function(Y) {
 		 * @return void
 		 */
 		selectBelowCell: function() {
-			var currentCell = this.get("selectedCell");
-			
-			var position = currentCell.get("coords");
+			var position = this.get("selectedCell").get("coords");
 			// Move down means y + 1
 			var newPosition = {
 				x: position.x,

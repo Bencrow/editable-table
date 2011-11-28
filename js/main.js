@@ -26,6 +26,16 @@ YUI({
 				},
 			},
 		},
+        "plugins": {
+            combine: false, 
+            base: "js/plugins/",
+            modules: {
+                "editInPlace": {
+                    path: "editInPlace.js",
+                    require: ["node", "event", "plugin"]
+                },
+            }
+       },
     },
 }).use(
     "console",
@@ -35,6 +45,8 @@ YUI({
     "cell", 
     "editableTable",
     "event-key",
+    "plugin",
+    "editInPlace",
 function(Y) {
 
 	var editableTable = new Y.EditableTable({

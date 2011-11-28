@@ -20,7 +20,7 @@ YUI().add("cell", function(Y) {
 		 * @return void
          */ 
         initializer: function() {
-            this._bindUI();
+           this._bindUI();
 
             // Publish event
             this.publish("valueChange", {
@@ -37,6 +37,7 @@ YUI().add("cell", function(Y) {
                 emitFacade: true,
                 broadcast: 1,
             });
+            this.plug(Y.Plugin.EditInPlace);
         },
         
         /**

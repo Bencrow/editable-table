@@ -99,8 +99,7 @@ YUI().add('editInPlace', function(Y) {
 		                e.preventDefault();  // Pas du soumission ou de TAB si erreur
 		                return;
 		            }
-		        }
-		        
+		        }	        
 		        if (isValid) {
 		            content.setContent(input.get("value"));
 		        }
